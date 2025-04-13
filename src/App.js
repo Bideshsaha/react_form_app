@@ -1,5 +1,6 @@
 import "./App.css";
 import {useState} from "react";
+import swal from 'sweetalert';
 
 function App() {
 
@@ -18,6 +19,14 @@ function App() {
     event.preventDefault();
     console.log("Form Data");
     console.log(FormData);
+    swal({
+      title: "Success!",
+      text: "Your form has been submitted successfully!",
+      icon: "success",
+      button: "OK",
+    }).then(() => {
+      window.location.reload(); // Reload the page after the alert
+    });
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-10 px-4">
@@ -52,7 +61,7 @@ function App() {
         </div>
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium">email</label><br></br>
+        <label htmlFor="email" className="block text-sm font-medium">Email</label><br></br>
           <input
           type="text"
           name="email"
@@ -87,7 +96,7 @@ function App() {
           type="text"
           name="streetAddress"
           id="streetAddress"
-          placeholder="Madhyamgram"
+          placeholder="Street / Lane"
           value={FormData.streetAddress}
           onChange={changeHandler}
           className="mt-1 block w-full border rounded-md px-3 py-2 shadow-sm"
